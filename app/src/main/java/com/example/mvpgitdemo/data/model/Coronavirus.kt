@@ -1,6 +1,6 @@
 package com.example.mvpgitdemo.data.model
 
-data class CoronaVirus (
+data class CoronaVirus(
     var name: String,
     var description: String,
     var path: String
@@ -8,7 +8,7 @@ data class CoronaVirus (
 
 object CoronaEntry {
     const val OBJECT = "countriesRoute"
-    const val NAME   = "Name"
-    const val DESC   = "Description"
-    const val PATH   = "Path"
+    const val NAME = "Name"
+    const val DESC = "Description"
+    const val PATH = "Path"
 }

@@ -1,6 +1,5 @@
 package com.example.mvpgitdemo.data.source.remote.fetchjson
 
-import android.util.Log
 import com.example.mvpgitdemo.data.model.CoronaEntry
 import org.json.JSONException
 import org.json.JSONObject

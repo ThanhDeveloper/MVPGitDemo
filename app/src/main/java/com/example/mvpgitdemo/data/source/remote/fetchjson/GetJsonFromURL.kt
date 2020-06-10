@@ -1,20 +1,19 @@
 package com.example.mvpgitdemo.data.source.remote.fetchjson
 
 import android.os.AsyncTask
-import android.util.Log
 import com.example.mvpgitdemo.data.source.remote.OnFetchDataJsonListener
 import com.example.mvpgitdemo.utils.Constant
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.lang.Exception
-import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
 
 
-class GetJsonFromURL<T> constructor(private val listener: OnFetchDataJsonListener<T>,
-                                    private val keyEntity: String) : AsyncTask<String?, Void?, String?>() {
+class GetJsonFromURL<T> constructor(
+    private val listener: OnFetchDataJsonListener<T>,
+    private val keyEntity: String
+) : AsyncTask<String?, Void?, String?>() {
 
     private var exception: Exception? = null
 
@@ -33,12 +32,12 @@ class GetJsonFromURL<T> constructor(private val listener: OnFetchDataJsonListene
         try {
             do {
                 line = bufferedReader.readLine()
-                if(line != null) {
+                if (line != null) {
                     content.append(line)
                 }
-            }while (line != null)
+            } while (line != null)
             bufferedReader.close()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
 
@@ -47,17 +46,17 @@ class GetJsonFromURL<T> constructor(private val listener: OnFetchDataJsonListene
 
     override fun onPostExecute(data: String?) {
         super.onPostExecute(data)
-            if (data != null && !data.isBlank()) {
-                val jsonObject = JSONObject(data)
-                jsonObject.getString(keyValues)
-                @Suppress("UNCHECKED_CAST")
-                listener.onSuccess(ParseJsonToObject().parseJsonToData(jsonObject, keyValues) as T)
-        }else exception?.let { listener.onError(it) }
+        if (data != null && !data.isBlank()) {
+            val jsonObject = JSONObject(data)
+            jsonObject.getString(keyValues)
+            @Suppress("UNCHECKED_CAST")
+            listener.onSuccess(ParseJsonToObject().parseJsonToData(jsonObject, keyValues) as T)
+        } else exception?.let { listener.onError(it) }
     }
 
     companion object {
         private const val TIME_OUT = 15000
-        private val METHOD_GET: String? = "GET"
+        private const val METHOD_GET = "GET"
         private const val keyValues = Constant.KEY_VALUE
     }
 }
