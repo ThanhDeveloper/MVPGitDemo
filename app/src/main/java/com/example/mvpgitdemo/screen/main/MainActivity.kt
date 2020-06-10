@@ -1,13 +1,14 @@
 package com.example.mvpgitdemo.screen.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.example.mvpgitdemo.R
 import com.example.mvpgitdemo.data.CoronaVirusRepository
 import com.example.mvpgitdemo.data.model.CoronaVirus
 import com.example.mvpgitdemo.screen.fragment.DetailFragment
+import com.example.mvpgitdemo.utils.Constant
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
@@ -42,9 +43,8 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun updateData(infoVirus: MutableList<CoronaVirus>?) {
-        infoVirus?.let{
-            for(element in infoVirus)
-            {
+        infoVirus?.let {
+            for (element in infoVirus) {
                 objectName = element.name.toString()
                 objectDesc = element.description.toString()
             }
@@ -55,12 +55,12 @@ class MainActivity : AppCompatActivity(),
         val transaction = supportFragmentManager.beginTransaction()
         val detailFragment = DetailFragment().apply {
             arguments = bundleOf(
-                "NameVirus" to name,
-                "DescVirus" to desc
+                Constant.KEY_NAME to name,
+                Constant.KEY_DESC to desc
             )
         }
         transaction.let {
-            it.add(R.id.frameContent,detailFragment)
+            it.add(R.id.frameContent, detailFragment)
             it.addToBackStack(null)
             it.commit()
         }

@@ -1,12 +1,12 @@
 package com.example.mvpgitdemo.screen.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
 import com.example.mvpgitdemo.R
+import com.example.mvpgitdemo.utils.Constant
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class DetailFragment : Fragment() {
@@ -25,8 +25,8 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        nameVirusTextView.text = arguments?.getString("NameVirus", "Nothing info")
-        descVirusTextView.text = arguments?.getString("DescVirus","Nothing info")
+        nameVirusTextView.text = arguments?.getString(Constant.KEY_NAME, Constant.KEY_NON_INFO)
+        descVirusTextView.text = arguments?.getString(Constant.KEY_DESC, Constant.KEY_NON_INFO)
 
         super.onViewCreated(view, savedInstanceState)
     }

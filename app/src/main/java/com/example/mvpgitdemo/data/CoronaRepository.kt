@@ -1,7 +1,6 @@
 package com.example.mvpgitdemo.data
 
 import com.example.mvpgitdemo.data.model.CoronaVirus
-import com.example.mvpgitdemo.data.source.local.CoronaLocalDatasource
 import com.example.mvpgitdemo.data.source.remote.CoranaVirusRemoteDatasource
 import com.example.mvpgitdemo.data.source.remote.OnFetchDataJsonListener
 
@@ -9,7 +8,8 @@ class CoronaVirusRepository private constructor(private val remote: CoronaVirusD
 
     private object Holder {
         val INSTANCE = CoronaVirusRepository(
-            remote = CoranaVirusRemoteDatasource.instance)
+            remote = CoranaVirusRemoteDatasource.instance
+        )
     }
 
     fun getCoronaVirusInfo(listener: OnFetchDataJsonListener<MutableList<CoronaVirus>>) {

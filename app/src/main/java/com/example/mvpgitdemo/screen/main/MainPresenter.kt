@@ -5,16 +5,13 @@ import com.example.mvpgitdemo.data.model.CoronaVirus
 import com.example.mvpgitdemo.data.source.remote.OnFetchDataJsonListener
 import com.example.mvpgitdemo.screen.main.MainContract.Presenter
 
-class MainPresenter internal constructor(private val repository: CoronaVirusRepository?) : Presenter {
+class MainPresenter internal constructor(private val repository: CoronaVirusRepository?) :
+    Presenter {
 
     private var view: MainContract.View? = null
 
     override fun onStart() {
         getInfo()
-    }
-
-    override fun onStop() {
-        TODO("Not yet implemented")
     }
 
     override fun setView(view: MainContract.View?) {
